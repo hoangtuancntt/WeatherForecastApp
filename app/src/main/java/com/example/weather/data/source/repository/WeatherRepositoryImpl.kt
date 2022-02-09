@@ -13,7 +13,10 @@ import kotlinx.coroutines.withContext
 import javax.inject.Inject
 import kotlin.coroutines.CoroutineContext
 
-class WeatherRepositoryImpl @Inject constructor(private val remoteData: RemoteDataSourceImpl, private val ioDispatcher: CoroutineContext) :
+class WeatherRepositoryImpl @Inject constructor(
+    private val remoteData: RemoteDataSourceImpl,
+    private val ioDispatcher: CoroutineContext
+) :
     WeatherRepository {
     override suspend fun getForecastByLocation(location: String?): Resource<List<Forecast>> =
         withContext(ioDispatcher) {

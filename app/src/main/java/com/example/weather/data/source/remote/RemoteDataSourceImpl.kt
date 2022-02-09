@@ -31,28 +31,12 @@ class RemoteDataSourceImpl @Inject constructor(
                 if (result.isSuccessful) Resource.Success(result.body()?.list)
                 else {
                     val type = object : TypeToken<ErrorResponse>() {}.type
-                    val errorResponse: ErrorResponse? = Gson().fromJson(result.errorBody()!!.charStream(), type)
+                    val errorResponse: ErrorResponse? =
+                        Gson().fromJson(result.errorBody()!!.charStream(), type)
                     Resource.Error(errorMsg = errorResponse?.message)
                 }
             } catch (ex: Exception) {
                 Resource.Error(errorMsg = ex.message)
             }
         }
-//    private suspend fun <T> processCall(request: suspend () -> Response<T>) : Resource<T> {
-//        if (!networkConnectivity.isConnected()) {
-//            return Resource.Error(errorMsg = "No Internet Connection")
-//        }
-//        return try {
-//            val result = request.invoke()
-//            if (result.isSuccessful)
-//                Resource.Success(result.body())
-//            else {
-//                val type = object : TypeToken<ErrorResponse>() {}.type
-//                val errorResponse: ErrorResponse? = Gson().fromJson(result.errorBody()!!.charStream(), type)
-//                Resource.Error(errorMsg = errorResponse?.message)
-//            }
-//        } catch (ex: Throwable) {
-//            return Resource.Error(errorMsg = "Unknown error")
-//        }
-//    }
 }

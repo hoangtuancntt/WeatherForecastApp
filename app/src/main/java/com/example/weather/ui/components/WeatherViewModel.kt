@@ -14,7 +14,8 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class WeatherViewModel @Inject constructor(private val weatherRepository: WeatherRepository) : ViewModel() {
+class WeatherViewModel @Inject constructor(private val weatherRepository: WeatherRepository) :
+    ViewModel() {
     private val weatherListLiveDataPrivate = MutableLiveData<List<Forecast>?>()
     val weatherListLiveData: LiveData<List<Forecast>?> get() = weatherListLiveDataPrivate
 

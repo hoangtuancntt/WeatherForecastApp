@@ -27,7 +27,12 @@ class MainActivity : BaseActivity() {
         supportActionBar?.title = "Weather Forecast"
         binding.rvWeather.layoutManager = LinearLayoutManager(this)
         binding.rvWeather.setHasFixedSize(true)
-        binding.rvWeather.addItemDecoration(DividerItemDecoration(this, DividerItemDecoration.VERTICAL))
+        binding.rvWeather.addItemDecoration(
+            DividerItemDecoration(
+                this,
+                DividerItemDecoration.VERTICAL
+            )
+        )
         binding.tvGetResult.setOnClickListener { v ->
             val key = binding.etSearch.text.toString()
             handleSearch(key)
