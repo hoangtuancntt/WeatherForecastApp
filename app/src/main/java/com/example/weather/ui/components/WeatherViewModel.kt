@@ -35,7 +35,7 @@ class WeatherViewModel @Inject constructor(private val weatherRepository: Weathe
             viewModelScope.launch {
                 loadingLiveDataPrivate.postValue(true)
                 viewModelScope.launch {
-                    when (val result = weatherRepository.getForecastByLocation(location)) {
+                    when (val result = weatherRepository.getForecastByLocation(formatQuery)) {
                         is Resource.Success -> {
                             loadingLiveDataPrivate.value = false
                             weatherListLiveDataPrivate.value = result.data
@@ -49,6 +49,7 @@ class WeatherViewModel @Inject constructor(private val weatherRepository: Weathe
                 }
             }
         } else {
+            noSearchFoundPrivate.postValue(Unit)
             showToastMessage("You need to fill in 3 or more words, please!!!")
         }
     }

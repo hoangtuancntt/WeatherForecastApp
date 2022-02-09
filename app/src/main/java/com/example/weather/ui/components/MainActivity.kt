@@ -76,6 +76,8 @@ class MainActivity : BaseActivity() {
 
     private fun handleErrorResult(unit: Unit) {
         binding.pbLoading.toGone()
+        binding.rvWeather.toGone()
+        binding.tvNoData.toGone()
     }
 
     private fun showDataView(show: Boolean) {
