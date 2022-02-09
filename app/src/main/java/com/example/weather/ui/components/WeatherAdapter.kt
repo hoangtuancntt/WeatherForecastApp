@@ -51,7 +51,7 @@ class WeatherAdapter : RecyclerView.Adapter<WeatherAdapter.MainViewHolder>() {
 
         private fun formatDate(timeStamp: Long): String {
             val dateFormat = SimpleDateFormat("EEE, dd MMM yyyy")
-            return "Date: ${dateFormat.format(Date())}"
+            return "Date: ${dateFormat.format(Date(timeStamp*1000))}"
         }
 
         private fun formatTemperature(temp: Float): String {
